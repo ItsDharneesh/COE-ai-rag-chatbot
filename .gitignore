@@ -1,0 +1,33 @@
+# Python
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+
+coe_bot/
+venv/
+env/
+
+# Environment variables
+
+.env
+
+# Vector database
+
+vector_store/
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Streamlit cache
+
+.streamlit/
+
+# Logs
+
+*.log
