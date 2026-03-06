@@ -4,6 +4,8 @@ wikipedia
 langchain-community
 langchain-openai
 faiss-cpu
+pypdf
+cryptography
 openai
 python-dotenv
 tiktoken
