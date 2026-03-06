@@ -1,4 +1,27 @@
 import streamlit as st
+import traceback
+
+try:
+
+    import numpy as np
+    import os
+
+    from dotenv import load_dotenv
+    load_dotenv()
+
+    from rag.wiki_retriever import search_wikipedia
+    from rag.retriever import retrieve_docs
+    from rag.generator import generate_answer
+
+except Exception as e:
+
+    st.error("Startup Error")
+
+    st.code(traceback.format_exc())
+
+    st.stop()
+
+import streamlit as st
 import numpy as np
 
 from rag.wiki_retriever import search_wikipedia
