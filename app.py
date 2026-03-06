@@ -6,6 +6,15 @@ from rag.wiki_retriever import search_wikipedia
 from dotenv import load_dotenv
 load_dotenv()
 
+import os
+from rag.ingest import load_documents, chunk_documents, build_vector_store
+
+# Build vector DB if missing (for cloud deployment)
+if not os.path.exists("vector_store"):
+    docs = load_documents()
+    chunks = chunk_documents(docs)
+    build_vector_store(chunks)
+
 from rag.retriever import retrieve_docs
 from rag.generator import generate_answer
 
