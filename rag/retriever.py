@@ -3,18 +3,15 @@ from langchain_openai import OpenAIEmbeddings
 
 VECTOR_PATH = "vector_store"
 
-embeddings = OpenAIEmbeddings(
-    model="text-embedding-3-small"
-)
-
-vector_db = FAISS.load_local(
-    VECTOR_PATH,
-    embeddings,
-    allow_dangerous_deserialization=True
-)
-
-
 def retrieve_docs(query):
+
+    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+
+    vector_db = FAISS.load_local(
+        VECTOR_PATH,
+        embeddings,
+        allow_dangerous_deserialization=True
+    )
 
     results = vector_db.similarity_search_with_score(query, k=3)
 
