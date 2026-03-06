@@ -1,5 +1,6 @@
 streamlit
 langchain
+wikipedia
 langchain-community
 langchain-openai
 faiss-cpu
