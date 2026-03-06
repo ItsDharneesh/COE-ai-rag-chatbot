@@ -9,4 +9,3 @@ cryptography
 openai
 python-dotenv
 tiktoken
-pypdf

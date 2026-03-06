@@ -15,10 +15,6 @@ env/
 
 .env
 
-# Vector database
-
-vector_store/
-
 # OS files
 
 .DS_Store
