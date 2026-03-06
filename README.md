@@ -9,7 +9,7 @@ A **Retrieval-Augmented Generation (RAG)** chatbot designed to answer questions 
 
 The chatbot retrieves relevant information from **curated documents** and optionally **Wikipedia**, then uses an **OpenAI LLM** to generate a context-aware answer.
 
-**Important note**: The confidence score is calculated only when the information is retrieved from the documnets adn not when web fallback occurs to provide the information. Under given time and with the additional of more than 5 documents the score can be improved. But due to the restriction of only 3 to 5 documents this method was used. *Now try the app and test it for yourself*.
+**Important note**: The confidence score is calculated only when the information is retrieved from the documnets and not when web fallback occurs to provide the information, this webfallback was added as a secondary safety measure because the project only asked for documnet retrieval search engine this touch was added to mak the search engine more dynamic. Under given time and with the additional of more than 5 documents the score can be improved. But due to the restriction of only 3 to 5 documents this method was used. *Now try the app and test it for yourself*.
 
 ---
 ## 🚀 Live App Link below
