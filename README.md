@@ -10,7 +10,12 @@ A **Retrieval-Augmented Generation (RAG)** chatbot designed to answer questions 
 The chatbot retrieves relevant information from **curated documents** and optionally **Wikipedia**, then uses an **OpenAI LLM** to generate a context-aware answer.
 
 ---
+## 🚀 Live App Link below
 
+Try the app here:  
+👉 https://coe-ai-rag-chatbot-kqcbu7wl6ps7gyfmsixercqc.streamlit.app/
+
+---
 # 🚀 Key Features
 
 * **Document ingestion pipeline**
