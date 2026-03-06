@@ -1,45 +1,25 @@
 import streamlit as st
-import traceback
-
-try:
-
-    import numpy as np
-    import os
-
-    from dotenv import load_dotenv
-    load_dotenv()
-
-    from rag.wiki_retriever import search_wikipedia
-    from rag.retriever import retrieve_docs
-    from rag.generator import generate_answer
-
-except Exception as e:
-
-    st.error("Startup Error")
-
-    st.code(traceback.format_exc())
-
-    st.stop()
-
-import streamlit as st
 import numpy as np
-
-from rag.wiki_retriever import search_wikipedia
+import os
 
 from dotenv import load_dotenv
 load_dotenv()
 
-import os
+# RAG modules
+from rag.wiki_retriever import search_wikipedia
+from rag.retriever import retrieve_docs
+from rag.generator import generate_answer
 from rag.ingest import load_documents, chunk_documents, build_vector_store
 
-# Build vector DB if missing (for cloud deployment)
+
+# -------------------------------------------------
+# BUILD VECTOR STORE IF MISSING (FOR CLOUD DEPLOYMENT)
+# -------------------------------------------------
+
 if not os.path.exists("vector_store"):
     docs = load_documents()
     chunks = chunk_documents(docs)
     build_vector_store(chunks)
-
-from rag.retriever import retrieve_docs
-from rag.generator import generate_answer
 
 
 # -------------------------------------------------
@@ -104,11 +84,11 @@ with st.sidebar:
     st.write("""
 This chatbot uses **Retrieval Augmented Generation (RAG)**.
 
-Sources used:
+**Sources used**
 - Internal COE documents
 - Wikipedia fallback
 
-Tech Stack:
+**Tech Stack**
 - OpenAI GPT-5.2
 - OpenAI Embeddings
 - FAISS Vector Store
@@ -120,7 +100,10 @@ Tech Stack:
 # HEADER
 # -------------------------------------------------
 
-st.markdown('<div class="main-title">COE AI Assistant</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="main-title">COE AI Assistant</div>',
+    unsafe_allow_html=True
+)
 
 st.markdown(
     '<div class="subtitle">Ask questions about Lean, Six Sigma, KPI tracking and Operational Excellence</div>',
@@ -148,14 +131,12 @@ if query:
         docs, scores = retrieve_docs(query)
 
         confidence = float(np.mean(scores))
-
         threshold = 0.75
 
         source = "Documents"
-
         context_docs = docs
 
-        # fallback to wikipedia if similarity is weak
+        # Wikipedia fallback if similarity weak
         if confidence > threshold:
 
             wiki_text = search_wikipedia(query)
