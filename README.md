@@ -38,6 +38,7 @@ Try the app here:
 
 The chatbot follows a **Retrieval-Augmented Generation (RAG) pipeline**:
 
+```
 User Query
 ↓
 Vector Embedding (OpenAI Embeddings)
@@ -53,7 +54,7 @@ Wikipedia Retrieval (fallback if needed)
 LLM Context Injection
 ↓
 Answer Generation
-
+```
 ---
 
 # 🔄 Workflow
