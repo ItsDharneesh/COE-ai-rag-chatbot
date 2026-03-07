@@ -56,6 +56,71 @@ LLM Context Injection
 Answer Generation
 ```
 ---
+## Governance & Adoption Considerations
+
+### 1. Data Privacy Risks in Enterprise AI
+
+Enterprise AI systems often process sensitive organizational data such as operational documents, internal KPIs, and process documentation. When integrating Large Language Models, several privacy risks may arise:
+
+- **Sensitive data exposure** if proprietary documents are sent to external APIs.
+- **Unintended data leakage** through prompt logs or stored embeddings.
+- **Improper access control**, allowing unauthorized users to query confidential information.
+
+To mitigate these risks, organizations should implement:
+- Data access controls and authentication layers
+- Encryption for stored embeddings and document repositories
+- Secure API handling and environment-based secret management
+
+### 2. Hallucination Risks in Retrieval-Augmented Generation (RAG)
+
+Although RAG systems reduce hallucinations by grounding responses in retrieved documents, they are not completely immune to inaccurate outputs.
+
+Potential risks include:
+
+- The model generating information **not present in retrieved documents**
+- **Low-quality retrieval results** leading to incorrect answers
+- Over-reliance on external sources such as Wikipedia
+
+In this project, hallucination risk is partially mitigated through:
+- Confidence scoring using similarity scores from the retriever
+- Switching to Wikipedia only when document retrieval confidence is low
+- Displaying retrieved context to improve transparency
+
+### 3. Improving System Reliability
+
+Several improvements could further increase the reliability of the system:
+
+- **Re-ranking retrieved documents** using cross-encoder models to improve retrieval quality
+- Implementing **answer grounding validation**, ensuring responses are based only on retrieved context
+- Adding **feedback loops** where users can flag incorrect answers
+- Using **multi-query retrieval techniques** to improve recall for complex queries
+- Monitoring response quality through automated evaluation metrics
+
+### 4. Adoption Metrics
+
+To evaluate real-world adoption of the AI assistant, the following metrics could be tracked:
+
+**a. Query Resolution Rate**
+Percentage of user queries successfully answered without requiring external support.
+
+**b. Usage Frequency**
+Number of queries submitted per user per day or week, indicating how frequently the system is used.
+
+**c. User Feedback / Accuracy Rating**
+Users can rate responses as helpful or incorrect, allowing continuous monitoring of system accuracy.
+
+Tracking these metrics helps assess both system performance and user adoption.
+
+---
+## Design Choices
+
+Several design choices were made to balance simplicity, reliability, and demonstration value:
+
+- **FAISS Vector Store** was used for efficient semantic search over document embeddings.
+- **Retrieval-Augmented Generation (RAG)** was selected to reduce hallucinations and ground responses in enterprise knowledge.
+- **Streamlit** was chosen for rapid prototyping of an interactive interface.
+- **Wikipedia fallback retrieval** was implemented when document retrieval confidence is low, improving coverage for general questions.
+---
 
 # 🔄 Workflow
 
